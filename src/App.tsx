@@ -1,11 +1,16 @@
-import Product from "./components/Product"
-import { products } from "./data/products"
+import { Route, Routes } from "react-router-dom"
+import ProductPage from "./pages/ProductPage"
+import { AboutPage } from "./pages/AboutPage"
+import { Layout } from "./pages/Layout"
 
 function App() {
   return (
-    <div className='container mx-auto max-w-7xl pt-5'>
-      {products.sort((a, b) => b.rating.rate - a.rating.rate).map(el => <Product key={el.id} product={el} />)}
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<ProductPage />} />
+        <Route path="/about" element={<AboutPage />} />
+      </Route>
+    </Routes>
   )
 }
 
